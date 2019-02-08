@@ -1,5 +1,5 @@
 {
-  "name": "@hypertype/app",
+  "name": "@hypertype/infr",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hypertype/app.git"
+    "url": "git+https://github.com/hypertype/infr.git"
   },
   "files": [
     "dist",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hypertype/app/issues"
+    "url": "https://github.com/hypertype/infr/issues"
   },
-  "homepage": "https://github.com/hypertype/app#readme",
+  "homepage": "https://github.com/hypertype/infr#readme",
   "directories": {
     "test": "tests"
   },
