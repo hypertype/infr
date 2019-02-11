@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "baseUrl": "../",
+    "rootDir": "../",
+    "outDir": "./dist/esm",
+    "declarationDir": "./dist/typings",
+    "noEmitOnError": true,
+    "composite": true
+  },
+  "include": [
+    "../**/*.ts"
+  ],
+  "exclude": [
+    "../node",
+    "../node_modules",
+    "../dist",
+    "dist"
+  ]
+}

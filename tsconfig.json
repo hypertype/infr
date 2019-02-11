@@ -5,21 +5,22 @@
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "noEmitOnError": true,
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@hypertype/core": [
+        "../core"
+      ]
+    }
   },
-  "include": [
-    "**/*.ts"
-  ],
   "references": [
     {
-      "path": "../core"
+      "path": "browser"
     },
     {
-      "path": "../tools"
+      "path": "node"
+    },
+    {
+      "path": "../core"
     }
-  ],
-  "exclude": [
-    "tests",
-    "dist"
   ]
 }

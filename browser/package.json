@@ -1,12 +1,11 @@
 {
-  "name": "@hypertype/infr",
+  "name": "@hypertype/infr-browser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/esm/node/index.js",
+  "typings": "dist/typings/node/index.d.ts",
   "scripts": {
     "build": "tsc -b --watch",
-    "build:node": "cd node && tsc -b --watch",
-    "build:browser": "cd browser && tsc -b --watch",
     "test": "jest"
   },
   "repository": {
@@ -37,7 +36,7 @@
   },
   "bundleDependencies": [],
   "dependencies": {
-    "@hypertype/core": "^1.2.1",
+    "@hypertype/core": "latest",
     "eventsource": "latest",
     "fetch": "latest",
     "ws": "latest"
