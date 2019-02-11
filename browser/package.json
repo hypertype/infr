@@ -1,6 +1,6 @@
 {
   "name": "@hypertype/infr-browser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/esm/node/index.js",
   "typings": "dist/typings/node/index.d.ts",
@@ -37,9 +37,7 @@
   "bundleDependencies": [],
   "dependencies": {
     "@hypertype/core": "latest",
-    "eventsource": "latest",
-    "fetch": "latest",
-    "ws": "latest"
+    "@hypertype/infr": "latest"
   },
   "devDependencies": {
     "@hypertype/tools": "latest"

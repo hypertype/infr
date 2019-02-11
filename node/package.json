@@ -1,6 +1,6 @@
 {
   "name": "@hypertype/infr-node",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/esm/node/index.js",
   "typings": "dist/typings/node/index.d.ts",
@@ -36,9 +36,10 @@
   },
   "bundleDependencies": [],
   "dependencies": {
-    "@hypertype/core": "latest",
+    "@hypertype/core": "^1.2.2",
+    "@hypertype/infr": "^1.0.3",
     "eventsource": "latest",
-    "fetch": "latest",
+    "fetch": "^1.1.0",
     "ws": "latest"
   },
   "devDependencies": {

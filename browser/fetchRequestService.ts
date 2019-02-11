@@ -1,5 +1,5 @@
 import {from, mergeMap, tap, throwError} from '@hypertype/core';
-import {IRequestOptions, IRequestService} from "../common";
+import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
 export class FetchRequestService implements IRequestService {
 

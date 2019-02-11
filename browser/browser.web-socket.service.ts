@@ -1,7 +1,4 @@
-import {BaseWebSocketService} from "../common/base-web-socket.service";
-import {HubConnection} from "../common/signalr/HubConnection";
-import {HubConnectionBuilder} from "../common/signalr/HubConnectionBuilder";
-import {HttpTransportType} from "../common/signalr/contracts/ITransport";
+import {BaseWebSocketService, HttpTransportType, HubConnection, HubConnectionBuilder} from "@hypertype/infr";
 import {BrowserHttpClient} from "./browser-http.client";
 
 export class BrowserWebSocketService extends BaseWebSocketService {
@@ -14,7 +11,10 @@ export class BrowserWebSocketService extends BaseWebSocketService {
                 WebSocket: WebSocket,
                 EventSource: EventSource
             })
-            .configureLogging({log(){}})
+            .configureLogging({
+                log() {
+                }
+            })
             .build();
     }
 
