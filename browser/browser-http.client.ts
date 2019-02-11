@@ -1,4 +1,4 @@
-import {HttpClient, HttpRequest, HttpResponse} from "../common/signalr/HttpClient";
+import {HttpClient, HttpRequest, HttpResponse} from "@hypertype/infr";
 
 export class BrowserHttpClient extends HttpClient {
     send(request: HttpRequest): Promise<HttpResponse> {

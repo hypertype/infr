@@ -1,9 +1,9 @@
 import {Container} from "@hypertype/core";
-import {InfrContainer, IRequestService, IWebSocketService, WebSocketUrlInjectionToken} from "../common";
+import {InfrContainer, IRequestService, IWebSocketService, WebSocketUrlInjectionToken}
+from "@hypertype/infr";
 import {FetchRequestService} from "./fetchRequestService";
 import {BrowserWebSocketService} from "./browser.web-socket.service";
 
-export * from '../common';
 export * from './fetchRequestService';
 
 export const BrowserContainer = new Container();

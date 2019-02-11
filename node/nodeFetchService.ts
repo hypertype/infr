@@ -1,6 +1,6 @@
 import {Observable, from} from "@hypertype/core";
 import {fetchUrl} from 'fetch';
-import {IRequestOptions, IRequestService} from "../common";
+import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
 
 export class NodeFetchService extends IRequestService {

@@ -1,20 +1,34 @@
 {
   "extends": "../tsconfig",
   "compilerOptions": {
-    "baseUrl": "../",
-    "rootDir": "../",
+    "baseUrl": ".",
+    "rootDir": ".",
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "noEmitOnError": true,
-    "composite": true
+    "composite": true,
+    "paths": {
+//      "@hypertype/infr": [
+//        "../"
+//      ],
+      "@hypertype/core": [
+        "../../core"
+      ]
+    }
   },
+  "references": [
+    {
+      "path": "../"
+    },
+    {
+      "path": "../../core"
+    }
+  ],
   "include": [
-    "../**/*.ts"
+    "**/*.ts"
   ],
   "exclude": [
-    "../browser",
-    "../node_modules",
-    "../dist",
+    "node_modules",
     "dist"
   ]
 }

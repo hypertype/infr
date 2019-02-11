@@ -1,4 +1,4 @@
-import {HttpClient, HttpRequest, HttpResponse} from "../common/signalr/HttpClient";
+import {HttpClient, HttpRequest, HttpResponse} from "@hypertype/infr";
 import {fetchUrl} from 'fetch';
 
 export class NodeHttpClient extends HttpClient {

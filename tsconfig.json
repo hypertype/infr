@@ -14,13 +14,8 @@
   },
   "references": [
     {
-      "path": "browser"
-    },
-    {
-      "path": "node"
-    },
-    {
       "path": "../core"
     }
-  ]
+  ],
+  "include": ["common"]
 }

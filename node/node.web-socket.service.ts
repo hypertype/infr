@@ -1,11 +1,8 @@
 import {fetchUrl} from 'fetch';
-import {BaseWebSocketService} from "../common/base-web-socket.service";
-import {HubConnection} from "../common/signalr/HubConnection";
-import {HubConnectionBuilder} from "../common/signalr/HubConnectionBuilder";
-import {HttpTransportType} from "../common/signalr/contracts/ITransport";
 import * as WebSocket from 'ws'
 import {NodeHttpClient} from "./node-http.client";
 import * as EventSource from 'eventsource';
+import {HubConnection, HubConnectionBuilder, HttpTransportType, BaseWebSocketService} from "@hypertype/infr";
 
 export class NodeWebSocketService extends BaseWebSocketService {
 

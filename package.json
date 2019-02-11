@@ -1,8 +1,9 @@
 {
   "name": "@hypertype/infr",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/esm/common/index.js",
+  "typings": "dist/typings/common/index.d.ts",
   "scripts": {
     "build": "tsc -b --watch",
     "build:node": "cd node && tsc -b --watch",
@@ -37,10 +38,7 @@
   },
   "bundleDependencies": [],
   "dependencies": {
-    "@hypertype/core": "^1.2.1",
-    "eventsource": "latest",
-    "fetch": "latest",
-    "ws": "latest"
+    "@hypertype/core": "^1.2.1"
   },
   "devDependencies": {
     "@hypertype/tools": "latest"

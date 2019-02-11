@@ -37,9 +37,7 @@
   "bundleDependencies": [],
   "dependencies": {
     "@hypertype/core": "latest",
-    "eventsource": "latest",
-    "fetch": "latest",
-    "ws": "latest"
+    "@hypertype/infr": "latest"
   },
   "devDependencies": {
     "@hypertype/tools": "latest"
