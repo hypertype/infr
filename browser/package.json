@@ -2,8 +2,8 @@
   "name": "@hypertype/infr-browser",
   "version": "1.1.0",
   "description": "",
-  "main": "dist/esm/node/index.js",
-  "typings": "dist/typings/node/index.d.ts",
+  "main": "dist/esm/browser/index.js",
+  "typings": "dist/typings/browser/index.d.ts",
   "scripts": {
     "build": "tsc -b --watch",
     "test": "jest"
