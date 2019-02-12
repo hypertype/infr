@@ -1,12 +1,13 @@
 {
   "name": "@hypertype/infr-browser",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "",
-  "main": "dist/esm/browser/index.js",
+  "module": "dist/esm/browser/index.js",
+  "main": "dist/esm/index.js",
   "typings": "dist/typings/browser/index.d.ts",
   "scripts": {
     "build": "tsc -b --watch",
-    "publish": "npm publish",
+    "deploy": "npm publish",
     "test": "jest"
   },
   "repository": {
@@ -36,7 +37,7 @@
     }
   },
   "bundleDependencies": [],
-  "dependencies": {
+  "peerDependencies": {
     "@hypertype/core": "latest",
     "@hypertype/infr": "latest"
   },
