@@ -6,6 +6,7 @@
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "noEmitOnError": true,
+    "target": "es5",
     "composite": true,
     "paths": {
 //      "@hypertype/infr": [
