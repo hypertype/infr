@@ -10,7 +10,7 @@
     "build": "tsc -b --watch",
     "build:node": "cd node && tsc -b --watch",
     "build:browser": "cd browser && tsc -b --watch",
-    "deploy": "npm publish",
+    "deploy": "npm version patch && npm publish",
     "test": "jest"
   },
   "repository": {
