@@ -7,7 +7,7 @@
   "typings": "dist/typings/node/index.d.ts",
   "scripts": {
     "build": "tsc -b --watch",
-    "deploy": "npm publish",
+    "deploy": "npm version patch && npm publish",
     "test": "jest"
   },
   "repository": {
@@ -49,6 +49,8 @@
     "ws": "latest"
   },
   "devDependencies": {
+    "@hypertype/core": "latest",
+    "@hypertype/infr": "latest",
     "@hypertype/tools": "latest"
   }
 }
