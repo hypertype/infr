@@ -9,6 +9,7 @@ export * from './logger';
 export * from './api.service';
 export * from './request.service';
 export * from './i-web-socket.service';
+export * from './state.logger';
 
 export const InfrContainer = new Container();
 InfrContainer.provide([

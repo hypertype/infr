@@ -45,6 +45,6 @@
   },
   "devDependencies": {
     "@hypertype/core": "^1.2.1",
-    "@hypertype/tools": "^1.0.16"
+    "@hypertype/tools": "^1.0.18"
   }
 }
