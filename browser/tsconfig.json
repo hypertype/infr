@@ -2,6 +2,7 @@
   "extends": "../tsconfig",
   "compilerOptions": {
     "baseUrl": "../",
+    "target": "es5",
     "rootDir": "../",
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",

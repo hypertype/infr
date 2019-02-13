@@ -1,4 +1,4 @@
-import {from, mergeMap, tap, throwError} from '@hypertype/core';
+import {from, mergeMap, Observable, tap, throwError} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
 export class FetchRequestService implements IRequestService {
@@ -6,7 +6,7 @@ export class FetchRequestService implements IRequestService {
     public request<T>(method,
                       url,
                       body = null,
-                      options: IRequestOptions = {}) {
+                      options: IRequestOptions = {}): Observable<T> {
         if (options.params) {
             url += '?' + Object.keys(options.params)
                 .map(key => `${key}=${options.params[key]}`)
