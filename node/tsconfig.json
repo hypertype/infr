@@ -9,9 +9,9 @@
     "target": "es5",
     "composite": true,
     "paths": {
-//      "@hypertype/infr": [
-//        "../"
-//      ],
+      "@hypertype/infr": [
+        "../"
+      ],
       "@hypertype/core": [
         "../../core"
       ]
@@ -29,6 +29,9 @@
     "**/*.ts"
   ],
   "exclude": [
+    "../browser",
+    "../node_modules",
+    "../dist",
     "node_modules",
     "dist"
   ]

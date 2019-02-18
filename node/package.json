@@ -1,11 +1,12 @@
 {
   "name": "@hypertype/infr-node",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "",
-  "module": "dist/esm/node/index.js",
-  "main": "dist/bundle/node/index.js",
-  "typings": "dist/typings/node/index.d.ts",
+  "module": "dist/esm/index.js",
+  "main": "dist/bundle/index.js",
+  "typings": "dist/typings/index.d.ts",
   "scripts": {
+    "bundle": "hypertype",
     "build": "tsc -b --watch",
     "deploy": "npm version patch && npm publish",
     "test": "jest"
