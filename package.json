@@ -1,12 +1,12 @@
 {
   "name": "@hypertype/infr",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "",
   "module": "dist/esm/common/index.js",
   "main": "dist/esm/common/index.js",
   "typings": "dist/typings/common/index.d.ts",
   "scripts": {
-    "bundle": "hypertype && hypertype node && hypertype browser",
+    "bundle": "hypertype",
     "build": "tsc -b --watch",
     "build:node": "cd node && tsc -b --watch",
     "build:browser": "cd browser && tsc -b --watch",
@@ -45,6 +45,6 @@
   },
   "devDependencies": {
     "@hypertype/core": "^1.2.1",
-    "@hypertype/tools": "^1.0.16"
+    "@hypertype/tools": "^1.0.18"
   }
 }

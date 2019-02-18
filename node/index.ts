@@ -3,8 +3,6 @@ import {InfrContainer, IRequestService, IWebSocketService, WebSocketUrlInjection
 import {NodeFetchService} from "./nodeFetchService";
 import {NodeWebSocketService} from "./node.web-socket.service";
 
-export * from './nodeFetchService';
-
 export const NodeContainer = new Container();
 NodeContainer.provide(InfrContainer);
 NodeContainer.provide([

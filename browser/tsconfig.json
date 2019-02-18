@@ -1,16 +1,32 @@
 {
   "extends": "../tsconfig",
   "compilerOptions": {
-    "baseUrl": "../",
+    "baseUrl": "./",
     "target": "es5",
-    "rootDir": "../",
+    "rootDir": "./",
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "noEmitOnError": true,
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@hypertype/infr": [
+        "../"
+      ],
+      "@hypertype/core": [
+        "../../core"
+      ]
+    }
   },
   "include": [
-    "../**/*.ts"
+    "**/*.ts"
+  ],
+  "references": [
+    {
+      "path": "../"
+    },
+    {
+      "path": "../../core"
+    }
   ],
   "exclude": [
     "../node",
