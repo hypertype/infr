@@ -1,5 +1,6 @@
-import {from, mergeMap, Observable, tap, throwError} from '@hypertype/core';
+import {from, mergeMap, Observable, throwError} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "@hypertype/infr";
+import URLSearchParams from '@ungap/url-search-params';
 
 export class FetchRequestService implements IRequestService {
 
@@ -8,10 +9,11 @@ export class FetchRequestService implements IRequestService {
                       body = null,
                       options: IRequestOptions = {}): Observable<T> {
         if (options.params) {
-            url += '?' + Object.keys(options.params)
-                .map(key => `${key}=${options.params[key]}`)
-                .join('&');
+            const urlSearchParams = new URLSearchParams();
+            this.fillParams(options.params, urlSearchParams);
+            url += '?' + urlSearchParams.toString();
         }
+
         return from(fetch(url, {
             method: method,
             body: body && JSON.stringify(body),
@@ -33,6 +35,21 @@ export class FetchRequestService implements IRequestService {
                 return t.text();
             }),
         );
+    }
+
+    private fillParams(data, urlSearchParams: URLSearchParams, keys = []) {
+        if (Array.isArray(data)) {
+            data.forEach((val, i) => {
+                this.fillParams(val, urlSearchParams, keys);
+            });
+        } else if (typeof data == "object") {
+            Object.entries(data).reduce((urlSearchParams, [key, value]) => {
+                this.fillParams(value, urlSearchParams, [...keys, key]);
+                return urlSearchParams;
+            }, urlSearchParams || new URLSearchParams())
+        } else {
+            urlSearchParams.append(keys.join('.'), data.toString());
+        }
     }
 
 }
