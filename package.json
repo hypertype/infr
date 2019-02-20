@@ -26,13 +26,15 @@
   },
   "homepage": "https://github.com/hypertype/infr#readme",
   "directories": {
-    "test": "tests"
+    "test": "node/tests"
   },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
+    "rootDir": "tests",
     "globals": {
       "ts-jest": {
+        "diagnostics": false,
         "tsConfig": "tests/tsconfig.json"
       }
     }

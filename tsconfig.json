@@ -1,11 +1,10 @@
 {
-  "extends": "../../tools/tsconfig.base",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist/esm",
     "target": "es5",
     "declarationDir": "./dist/typings",
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "composite": true,
     "paths": {
       "@hypertype/core": [

@@ -1,6 +1,6 @@
 {
   "name": "@hypertype/infr-node",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "module": "dist/esm/index.js",
   "main": "dist/bundle/index.js",
@@ -33,6 +33,7 @@
     "testEnvironment": "node",
     "globals": {
       "ts-jest": {
+        "diagnostics": false,
         "tsConfig": "tests/tsconfig.json"
       }
     }
@@ -49,11 +50,11 @@
   "dependencies": {
     "eventsource": "latest",
     "fetch": "latest",
-    "ws": "latest"
+    "ws": "^6.1.4"
   },
   "devDependencies": {
-    "@hypertype/core": "latest",
-    "@hypertype/infr": "latest",
+    "@hypertype/core": "^1.2.6",
+    "@hypertype/infr": "^1.2.6",
     "@hypertype/tools": "latest"
   }
 }
