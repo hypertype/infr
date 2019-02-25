@@ -2,23 +2,17 @@ import {fetchUrl} from 'fetch';
 import * as WebSocket from 'ws'
 import {NodeHttpClient} from "./node-http.client";
 import * as EventSource from 'eventsource';
-import {BaseWebSocketService, HttpTransportType, HubConnection, HubConnectionBuilder} from "@hypertype/infr";
+import {BaseWebSocketService, HttpTransportType} from "@hypertype/infr";
+import {IHttpConnectionOptions} from "@hypertype/infr";
 
 export class NodeWebSocketService extends BaseWebSocketService {
-
-    protected buildConnection(url: string): HubConnection {
-        return new HubConnectionBuilder()
-            .withUrl(url, {
-                transport: HttpTransportType.WebSockets,
-                httpClient: new NodeHttpClient(),
-                WebSocket: WebSocketAuth as any,
-                EventSource: EventSource,
-            })
-            .configureLogging({
-                log(type, message) {
-                }
-            })
-            .build();
+    protected getConfig(): IHttpConnectionOptions {
+        return {
+            transport: HttpTransportType.WebSockets,
+            httpClient: new NodeHttpClient(),
+            WebSocket: WebSocketAuth as any,
+            EventSource: EventSource,
+        }
     }
 }
 

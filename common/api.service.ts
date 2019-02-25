@@ -56,7 +56,7 @@ export class ApiService {
             map(_ => fileReader.result as ArrayBuffer),
             map(array => new Uint8Array(array)),
             // map(array => bson.deserialize(array)),
-            tap(console.log)
+            // tap(console.log)
         );
     };
 }

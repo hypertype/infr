@@ -1,11 +1,9 @@
-import {HubConnection} from "./HubConnection";
 import {HttpClient, HttpRequest, HttpResponse} from "./HttpClient";
 import {HttpTransportType} from "./contracts/ITransport";
-import {HubConnectionBuilder} from "./HubConnectionBuilder";
+import {IHttpConnectionOptions} from "./contracts/IHttpConnectionOptions";
 
 export {
-    HubConnection,
-    HubConnectionBuilder,
+    IHttpConnectionOptions,
     HttpTransportType,
     HttpClient, HttpRequest, HttpResponse
 }
