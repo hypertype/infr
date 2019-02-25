@@ -1,11 +1,12 @@
 {
   "name": "@hypertype/infr-browser",
-  "version": "1.2.7",
+  "version": "1.2.9",
   "description": "",
   "module": "dist/esm/index.js",
   "main": "dist/bundle/browser/index.js",
   "typings": "dist/typings/index.d.ts",
   "scripts": {
+    "bundle": "hypertype",
     "build": "tsc -b --watch",
     "deploy": "npm version patch && npm publish",
     "test": "jest"
@@ -44,7 +45,6 @@
   "devDependencies": {
     "@hypertype/core": "latest",
     "@hypertype/infr": "latest",
-    "@hypertype/tools": "latest",
-    "@ungap/url-search-params": "latest"
+    "@hypertype/tools": "latest"
   }
 }
