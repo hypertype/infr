@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist/esm",
-    "target": "es5",
+    "target": "es2018",
+    "moduleResolution": "node",
     "declarationDir": "./dist/typings",
     "noEmitOnError": false,
     "composite": true,

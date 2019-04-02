@@ -54,6 +54,7 @@ export class WebSocketTransport implements ITransport {
                 // Only pass cookies when in non-browser environments
                 webSocket = new this.webSocketConstructor(url, undefined, {
                     headers: {
+                        Authorization: 'Bearer',
                         Cookie: `${cookies}`,
                     },
                 });

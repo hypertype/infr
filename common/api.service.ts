@@ -1,4 +1,4 @@
-import {fromEvent, InjectionToken, map, mergeMap, Observable, of, tap} from '@hypertype/core';
+import {fromEvent, InjectionToken, map, mergeMap, Observable, of} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "./request.service";
 
 export const ApiUrlInjectionToken = new InjectionToken('apiUrl');
@@ -28,8 +28,9 @@ export class ApiService {
         return this.request<T>('PUT', url, body, options);
     }
 
-    protected request<T>(method, url, body = null, options: IRequestOptions = {}): Observable<T> {
-        url = this.ApiUrl.toString() + url;
+    public request<T>(method, url: string, body = null, options: IRequestOptions = {}): Observable<T> {
+        if (!/^(http|ws)s?:\/\//.test(url))
+            url = this.ApiUrl.toString() + url;
         return this.http.request(method, url, body, {
             headers: {
                 ...(options.headers || {}),

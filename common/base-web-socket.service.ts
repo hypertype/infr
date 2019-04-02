@@ -14,10 +14,13 @@ export abstract class BaseWebSocketService extends IWebSocketService {
 
     constructor(private url: string = "http://localhost:8888/inventory") {
         super();
-        this.initConnection();
     }
 
+    private isInit = false;
+
     public Hub(hub: string) {
+        if (!this.isInit)
+            this.initConnection();
         return new WebSocketHub(this.connection$, hub);
     }
 
@@ -32,7 +35,7 @@ export abstract class BaseWebSocketService extends IWebSocketService {
 
     protected abstract getConfig(): IHttpConnectionOptions;
 
-    private initConnection() {
+    private initConnection(tryCounter = 0) {
         const config = this.getConfig();
         const connection = new HubConnectionBuilder()
             .withUrl(this.url, config)
@@ -45,20 +48,22 @@ export abstract class BaseWebSocketService extends IWebSocketService {
                 }
             })
             .build();
-        connection.start().catch();
-        connection.onclose(e => {
-            this.restartConnection(connection);
+        connection.start().catch(e => {
+            this.restartConnection(tryCounter + 1);
         });
-        console.warn('connected');
+        connection.onclose(e => {
+            this.restartConnection();
+        });
         this.connectionSubject$.next(connection);
+        this.isInit = true;
     }
 
-    private restartConnection(connection){
+    private restartConnection(tryCounter = 1){
         this.connectionSubject$.next(null);
-        console.warn('disconnected');
+        console.warn('disconnected, try: ', tryCounter);
         setTimeout(() => {
-            this.initConnection();
-        }, 1000);
+         //   this.initConnection(tryCounter);
+        }, tryCounter * 1000);
     }
 
 }
@@ -71,7 +76,9 @@ export class WebSocketHub {
 
     constructor(private connection: Observable<HubConnection>, hub: string) {
         this.connection.subscribe(connection =>
-            connection.on(hub, (...params) => this.messagesSubject.next(params))
+            connection.on(hub, (...params) => {
+                this.messagesSubject.next(params);
+            })
         );
     }
 }

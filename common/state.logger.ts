@@ -1,3 +1,5 @@
-export abstract class StateLogger {
-    public abstract send({type, payload}, state);
+export class StateLogger {
+    public send({type, payload}, state){
+
+    }
 }

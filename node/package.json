@@ -50,11 +50,11 @@
   "dependencies": {
     "eventsource": "latest",
     "fetch": "latest",
-    "ws": "^6.1.4"
+    "ws": "^6.2.1"
   },
   "devDependencies": {
-    "@hypertype/core": "^1.2.6",
-    "@hypertype/infr": "^1.2.6",
-    "@hypertype/tools": "latest"
+    "@hypertype/core": "^1.2.7",
+    "@hypertype/infr": "^1.2.7",
+    "@hypertype/tools": "^1.0.27"
   }
 }

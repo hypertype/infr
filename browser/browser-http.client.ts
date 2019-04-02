@@ -1,13 +1,16 @@
-import {HttpClient, HttpRequest, HttpResponse} from "@hypertype/infr";
+import {ApiService, HttpClient, HttpRequest, HttpResponse} from "@hypertype/infr";
 
 export class BrowserHttpClient extends HttpClient {
+    constructor(private apiService: ApiService) {
+        super();
+    }
+
     send(request: HttpRequest): Promise<HttpResponse> {
-        return fetch(request.url, {
-            method: request.method,
-            body: request.content,
-            headers: request.headers
-        }).then(res => res.text()
-            .then(data => new HttpResponse(res.status, res.statusText, data)));
+        return this.apiService.request(request.method, request.url, request.content, {
+            headers: request.headers,
+        }).toPromise()
+            .then(res => new HttpResponse(200, 'OK', JSON.stringify(res)))
+            .catch(err => new HttpResponse(err.code, err.message, err));
     }
 
 }
