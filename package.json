@@ -45,7 +45,12 @@
     "@hypertype/core": "^1.2.1"
   },
   "devDependencies": {
-    "@hypertype/core": "^1.2.1",
-    "@hypertype/tools": "^1.0.18"
+    "@hypertype/core": "^2.0.0",
+    "@hypertype/tools": "^2.0.0"
+  },
+  "hypertype": {
+    "lib": {
+      "index": "common/index.ts"
+    }
   }
 }

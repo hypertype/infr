@@ -44,8 +44,13 @@
     "@hypertype/infr": "latest"
   },
   "devDependencies": {
-    "@hypertype/core": "latest",
-    "@hypertype/infr": "latest",
-    "@hypertype/tools": "latest"
+    "@hypertype/core": "^2.0.0",
+    "@hypertype/tools": "^2.0.0",
+    "@hypertype/infr": "^2.0.0"
+  },
+  "hypertype": {
+    "lib": {
+      "index": "index.ts"
+    }
   }
 }
