@@ -1,6 +1,6 @@
 {
   "name": "@hypertype/infr-node",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "module": "dist/esm/index.js",
   "main": "dist/bundle/index.js",
@@ -16,8 +16,7 @@
     "url": "git+https://github.com/hypertype/infr.git"
   },
   "files": [
-    "dist",
-    "tsconfig.json"
+    "dist"
   ],
   "author": "",
   "license": "ISC",
@@ -59,7 +58,7 @@
   },
   "hypertype": {
     "lib": {
-      "index": "index.ts"
+      "index": "dist/esm/index.js"
     }
   }
 }

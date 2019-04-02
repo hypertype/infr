@@ -2,11 +2,12 @@
   "extends": "../tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": ".",
+    "rootDir": "./",
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "noEmitOnError": true,
     "target": "es2018",
+    "moduleResolution": "node",
     "composite": true,
     "paths": {
       "@hypertype/infr": [

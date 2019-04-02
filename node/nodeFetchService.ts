@@ -1,4 +1,4 @@
-import {Observable, from} from "@hypertype/core";
+import {Observable} from "@hypertype/core";
 import {fetchUrl} from 'fetch';
 import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
@@ -25,9 +25,9 @@ export class NodeFetchService extends IRequestService {
                         status: meta.status,
                         exception: body
                     });
-                } else if (meta.status == 204){
+                } else if (meta.status == 204) {
                     subscr.next();
-                } else if (meta.status == 200){
+                } else if (meta.status == 200) {
                     subscr.next(JSON.parse(body));
                 }
                 subscr.complete();
