@@ -1,4 +1,4 @@
-import {from, mergeMap, Observable, throwError} from '@hypertype/core';
+import {from, Observable, of} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
 export class FetchRequestService implements IRequestService {
@@ -8,9 +8,8 @@ export class FetchRequestService implements IRequestService {
                       body = null,
                       options: IRequestOptions = {}): Observable<T> {
         if (options.params) {
-            url += '?' + Object.entries(options.params).map(([key,value]) => `${key}=${value}`).join('&');
+            url += '?' + Object.entries(options.params).map(([key, value]) => `${key}=${value}`).join('&');
         }
-
         return from(fetch(url, {
             method: method,
             body: body && JSON.stringify(body),
@@ -18,20 +17,22 @@ export class FetchRequestService implements IRequestService {
                 'Content-Type': 'application/json',
                 ...options.headers,
             }
-        })).pipe(
-            mergeMap(t => {
+        })
+            .then(t => {
                 if (t.status >= 300) {
-
-                    return throwError({
+                    throw {
                         code: t.status,
                         message: t.text()
-                    })
+                    };
                 }
-                if (/json/.test(t.headers.get('Content-Type')))
+                // if (+t.headers.get('Content-Length') == 0) {
+                //     return of('');
+                // }
+                if (/json/.test(t.headers.get('Content-Type'))) {
                     return t.json();
+                }
                 return t.text();
-            }),
-        );
+            }))
     }
 
 }

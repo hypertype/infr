@@ -1,4 +1,16 @@
-import {fromEvent, InjectionToken, map, mergeMap, Observable, of} from '@hypertype/core';
+import {
+    catchError,
+    fromEvent,
+    InjectionToken,
+    map,
+    mergeMap,
+    Observable,
+    of,
+    ReplaySubject,
+    startWith,
+    tap,
+    throwError
+} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "./request.service";
 
 export const ApiUrlInjectionToken = new InjectionToken('apiUrl');
@@ -28,10 +40,22 @@ export class ApiService {
         return this.request<T>('PUT', url, body, options);
     }
 
+    private loadingCounter = 0;
+    private loadingSubject$ = new ReplaySubject<number>();
+    public Loading$: Observable<number> = this.loadingSubject$.asObservable().pipe(
+        // map(d => d != 0),
+        startWith(0),
+    );
+
     public request<T>(method, url: string, body = null, options: IRequestOptions = {}): Observable<T> {
+        //WTF?
+        if (!/accessTime/.test(url)) {
+            this.loadingCounter++;
+            this.loadingSubject$.next(this.loadingCounter);
+        }
         if (!/^(http|ws)s?:\/\//.test(url))
             url = this.ApiUrl.toString() + url;
-        return this.http.request(method, url, body, {
+        const res = this.http.request(method, url, body, {
             headers: {
                 ...(options.headers || {}),
                 'Accept': this.isBSON ? 'application/bson' : 'application/json'
@@ -43,8 +67,18 @@ export class ApiService {
             //   return (event instanceof HttpResponse);
             // }),
             // map(event => (<HttpResponse<Blob>>event).body),
-            mergeMap(this.processResult)
+            tap(() => {
+                this.loadingCounter--;
+                this.loadingSubject$.next(this.loadingCounter)
+            }),
+            catchError(e => {
+                this.loadingCounter--;
+                this.loadingSubject$.next(this.loadingCounter);
+                return throwError(e);
+            }),
+            mergeMap(this.processResult),
         );
+        return res;
     }
 
     private processResult = (body) => {

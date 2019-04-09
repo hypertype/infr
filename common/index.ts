@@ -16,6 +16,14 @@ export * from './state.logger';
 export const InfrContainer = new Container();
 InfrContainer.provide([
     {provide: Logger},
+    {
+        provide: ITokenStore, useValue: {
+            get() {
+                return null;
+            }, set() {
+            }
+        }
+    },
     {provide: ApiService, deps: [IRequestService, ApiUrlInjectionToken]},
     {provide: ApiUrlInjectionToken, useValue: 'http://localhost/api'},
     {provide: WebSocketUrlInjectionToken, useValue: 'http://localhost/inventory'},
