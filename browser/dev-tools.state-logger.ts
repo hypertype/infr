@@ -6,14 +6,18 @@ export class DevToolsStateLogger extends StateLogger {
     constructor() {
         super();
         this.devTools = window['__REDUX_DEVTOOLS_EXTENSION__'];
-        this.devTools.connect();
+        if (this.devTools) {
+            this.devTools.connect();
+        }
     }
 
 
     public send({type, payload}: { type: any; payload: any; }, state: any) {
-        this.devTools.send({
-            type, payload
-        }, state);
+        if (this.devTools) {
+            this.devTools.send({
+                type, payload
+            }, state);
+        }
     }
 
 }

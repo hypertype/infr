@@ -9,11 +9,7 @@ export * from './fetchRequestService';
 export const BrowserContainer = new Container();
 BrowserContainer.provide(InfrContainer);
 BrowserContainer.provide([
-    // {provide: StateLogger, useClass: DevToolsStateLogger},
+    {provide: StateLogger, useClass: DevToolsStateLogger},
     {provide: IRequestService, useClass: FetchRequestService},
     {provide: IWebSocketService, useClass: BrowserWebSocketService},
 ]);
-
-export {
-    DevToolsStateLogger
-}
