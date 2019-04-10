@@ -11,5 +11,5 @@ BrowserContainer.provide(InfrContainer);
 BrowserContainer.provide([
     {provide: StateLogger, useClass: DevToolsStateLogger},
     {provide: IRequestService, useClass: FetchRequestService},
-    {provide: IWebSocketService, useClass: BrowserWebSocketService}
+    {provide: IWebSocketService, useClass: BrowserWebSocketService},
 ]);

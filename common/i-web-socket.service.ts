@@ -1,4 +1,4 @@
-import {Observable} from "@hypertype/core";
+import {InjectionToken, Observable} from "@hypertype/core";
 
 export abstract class IWebSocketService {
     public abstract Hub(hub: string): {
@@ -7,4 +7,4 @@ export abstract class IWebSocketService {
 
     public abstract send<T>(method: string, ...params): Promise<T>;
 }
-export const WebSocketUrlInjectionToken = Symbol('WebSocketUrlInjectionToken');
+export const WebSocketUrlInjectionToken = new InjectionToken('WebSocketUrlInjectionToken');
