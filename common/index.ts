@@ -4,6 +4,7 @@ import {IRequestService} from "./request.service";
 import {Container} from "@hypertype/core";
 import {WebSocketUrlInjectionToken} from "./i-web-socket.service";
 import {AuthApiService, ITokenStore} from "./auth-api.service";
+import {ApiHttpClient} from "./api-http.client";
 
 export {BaseWebSocketService} from "./base-web-socket.service";
 
@@ -32,10 +33,11 @@ InfrContainer.provide([
 export const AuthContainer = new Container();
 AuthContainer.provide(InfrContainer);
 AuthContainer.provide([
+    ApiHttpClient,
     {provide: ApiService, useClass: AuthApiService, deps: [IRequestService, ApiUrlInjectionToken, ITokenStore]}
 ]);
 
 export * from './signalr';
 export {
-    ITokenStore, WebSocketUrlInjectionToken
+    ITokenStore, WebSocketUrlInjectionToken, ApiHttpClient
 }

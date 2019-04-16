@@ -4,6 +4,8 @@ import {HubConnection} from "./signalr/HubConnection";
 import {IHttpConnectionOptions} from "./signalr";
 import {LogLevel} from "./signalr/contracts/ILogger";
 import {HubConnectionBuilder} from "./signalr/HubConnectionBuilder";
+import {ApiHttpClient} from "./api-http.client";
+import {ITokenStore} from "./auth-api.service";
 
 
 export abstract class BaseWebSocketService extends IWebSocketService {
@@ -12,7 +14,10 @@ export abstract class BaseWebSocketService extends IWebSocketService {
         filter(Fn.Ib),
     );
 
-    constructor(private url: string = "http://localhost:8888/inventory") {
+    protected constructor(private url: string = "http://localhost:8888/inventory",
+                          private api: ApiHttpClient,
+                          private tokenStore: ITokenStore
+    ) {
         super();
     }
 
@@ -36,7 +41,13 @@ export abstract class BaseWebSocketService extends IWebSocketService {
     protected abstract getConfig(): IHttpConnectionOptions;
 
     private initConnection(tryCounter = 0) {
-        const config = this.getConfig();
+        const config = {
+            ...this.getConfig(),
+            httpClient: this.api,
+            accessTokenFactory: () => {
+                return this.tokenStore.get();
+            }
+        };
         const connection = new HubConnectionBuilder()
             .withUrl(this.url, config)
             .configureLogging({
@@ -58,11 +69,11 @@ export abstract class BaseWebSocketService extends IWebSocketService {
         this.isInit = true;
     }
 
-    private restartConnection(tryCounter = 1){
+    private restartConnection(tryCounter = 1) {
         this.connectionSubject$.next(null);
         console.warn('disconnected, try: ', tryCounter);
         setTimeout(() => {
-         //   this.initConnection(tryCounter);
+            //   this.initConnection(tryCounter);
         }, tryCounter * 1000);
     }
 

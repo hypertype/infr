@@ -1,6 +1,9 @@
-import {ApiService, HttpClient, HttpRequest, HttpResponse} from "@hypertype/infr";
+import {HttpClient, HttpRequest, HttpResponse} from "./signalr";
+import {ApiService} from "./api.service";
+import {Injectable} from "@hypertype/core";
 
-export class BrowserHttpClient extends HttpClient {
+@Injectable()
+export class ApiHttpClient extends HttpClient {
     constructor(private apiService: ApiService) {
         super();
     }
