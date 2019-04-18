@@ -5,9 +5,11 @@ export class DevToolsStateLogger extends StateLogger {
 
     constructor() {
         super();
-        this.devTools = window['__REDUX_DEVTOOLS_EXTENSION__'];
+        this.devTools = window['__REDUX_DEVTOOLS_EXTENSION__'].connect({
+            name: document.title
+        });
         if (this.devTools) {
-            this.devTools.connect();
+            this.devTools.init();
         }
     }
 

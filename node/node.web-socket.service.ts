@@ -9,8 +9,9 @@ import {
     ITokenStore,
     WebSocketUrlInjectionToken
 } from "@hypertype/infr";
-import {Inject} from "@hypertype/core";
+import {Inject, Injectable} from "@hypertype/core";
 
+@Injectable()
 export class NodeWebSocketService extends BaseWebSocketService {
     constructor(@Inject(WebSocketUrlInjectionToken) url,
                 api: ApiHttpClient,

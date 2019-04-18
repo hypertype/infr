@@ -16,6 +16,7 @@ export * from './state.logger';
 
 export const InfrContainer = new Container();
 InfrContainer.provide([
+    ApiHttpClient,
     {provide: Logger},
     {
         provide: ITokenStore, useValue: {
@@ -33,7 +34,6 @@ InfrContainer.provide([
 export const AuthContainer = new Container();
 AuthContainer.provide(InfrContainer);
 AuthContainer.provide([
-    ApiHttpClient,
     {provide: ApiService, useClass: AuthApiService, deps: [IRequestService, ApiUrlInjectionToken, ITokenStore]}
 ]);
 

@@ -4,8 +4,6 @@ import {FetchRequestService} from "./fetchRequestService";
 import {BrowserWebSocketService} from "./browser.web-socket.service";
 import {DevToolsStateLogger} from "./dev-tools.state-logger";
 
-export * from './fetchRequestService';
-
 export const BrowserContainer = new Container();
 BrowserContainer.provide(InfrContainer);
 BrowserContainer.provide([
@@ -13,3 +11,8 @@ BrowserContainer.provide([
     {provide: IRequestService, useClass: FetchRequestService},
     {provide: IWebSocketService, useClass: BrowserWebSocketService},
 ]);
+
+export {
+    FetchRequestService,
+    DevToolsStateLogger
+}

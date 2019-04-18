@@ -6,6 +6,7 @@
     "outDir": "./dist/esm",
     "declarationDir": "./dist/typings",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "noEmitOnError": true,
     "target": "es2018",
     "moduleResolution": "node",
