@@ -28,11 +28,11 @@ export class FetchRequestService implements IRequestService {
                 // if (+t.headers.get('Content-Length') == 0) {
                 //     return of('');
                 // }
+                if (options.responseType == "blob")
+                    return t.blob();
                 if (/json/.test(t.headers.get('Content-Type'))) {
                     return t.json();
                 }
-                if (options.responseType == "blob")
-                    return t.blob();
                 return t.text();
             }))
     }
