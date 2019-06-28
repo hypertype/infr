@@ -61,7 +61,7 @@ export class ApiService {
                 'Accept': this.isBSON ? 'application/bson' : 'application/json'
             },
             params: options.params,
-            responseType: this.isBSON ? 'blob' : 'json'
+            responseType: options.responseType || (this.isBSON ? 'blob' : 'json')
         }).pipe(
             // filter(event => {
             //   return (event instanceof HttpResponse);
