@@ -1,4 +1,4 @@
-import {from, Observable, of} from '@hypertype/core';
+import {from, Observable} from '@hypertype/core';
 import {IRequestOptions, IRequestService} from "@hypertype/infr";
 
 export class FetchRequestService implements IRequestService {
@@ -31,6 +31,8 @@ export class FetchRequestService implements IRequestService {
                 if (/json/.test(t.headers.get('Content-Type'))) {
                     return t.json();
                 }
+                if (options.responseType == "blob")
+                    return t.blob();
                 return t.text();
             }))
     }
