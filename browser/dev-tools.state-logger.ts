@@ -1,14 +1,16 @@
 import {StateLogger} from "@hypertype/infr";
 
+const devToolsName = '__REDUX_DEVTOOLS_EXTENSION__';
+
 export class DevToolsStateLogger extends StateLogger {
     private devTools: any;
 
     constructor() {
         super();
-        this.devTools = window['__REDUX_DEVTOOLS_EXTENSION__'].connect({
-            name: document.title
-        });
-        if (this.devTools) {
+        if (window[devToolsName]) {
+            this.devTools = window[devToolsName].connect({
+                name: document.title
+            });
             this.devTools.init();
         }
     }
