@@ -25,6 +25,9 @@ export class NodeFetchService extends IRequestService {
                         status: meta.status,
                         exception: body
                     });
+
+                } else if (options.responseType == "blob") {
+                    subscr.next(body);
                 } else if (meta.status == 204) {
                     subscr.next();
                 } else if (meta.status == 200) {
